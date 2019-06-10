@@ -7,7 +7,6 @@ use AppBundle\Exception\NotABuffetException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Tests\Normalizer\AbstractNormalizerTest;
 
 class Enclosure
 {
@@ -65,15 +64,22 @@ class Enclosure
             return false;
     }
 
+    /**
+     * @return Security[]|Collection
+     */
+    public function getSecurities(): Collection
+    {
+        return $this->securities;
+    }
+
     protected function canAddDinosaur(Dinosaur $dinosaur): bool
     {
         return count($this->dinosaurs) === 0
             || $this->dinosaurs->first()->isCarnivorous() === $dinosaur->isCarnivorous();
     }
 
-    private function addSecurity(Security $security)
+    public function addSecurity(Security $security)
     {
         $this->securities[] = $security;
     }
-
 }

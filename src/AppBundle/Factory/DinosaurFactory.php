@@ -23,8 +23,7 @@ class DinosaurFactory
     {
         // defaults
         $codeName = 'ING-' . random_int(1, 99999);
-//        $length = $this->lengthDeterminator->getLengthFromSpecification($specification);
-        $length = $this->lengthDeterminator->getLengthFromSpecification('foo');
+        $length = $this->lengthDeterminator->getLengthFromSpecification($specification);
         $isCarnivorous = false;
 
         if (strpos($specification, 'carnivorous') !== false) {
