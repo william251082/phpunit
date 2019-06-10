@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Dinosaur
 {
-    const LARGE = 10;
+    const LARGE = 20;
 
     const HUGE = 30;
 

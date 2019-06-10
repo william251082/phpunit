@@ -8,31 +8,15 @@ class DinosaurFactory
 {
     public function growVelociraptor(int $length): Dinosaur
     {
-        return $this->createDinosaur('Velociraptor', true, 5);
+        return $this->createDinosaur('Velociraptor', true, $length);
     }
 
     public function growFromSpecification(string $specification): Dinosaur
     {
         // defaults
         $codeName = 'ING-' . random_int(1, 99999);
-        $length = random_int(1, Dinosaur::LARGE - 1);
+        $length = $this->getLengthFromSpecification($specification);
         $isCarnivorous = false;
-
-        if (strpos($specification, 'huge') !== false) {
-            $length = random_int(Dinosaur::HUGE, 100);
-        }
-
-        if (strpos($specification, 'omg') !== false) {
-            $length = random_int(Dinosaur::HUGE, 100);
-        }
-
-        if (strpos($specification, 'scream') !== false) {
-            $length = random_int(Dinosaur::HUGE, 100);
-        }
-
-        if (strpos($specification, 'large') !== false) {
-            $length = random_int(Dinosaur::LARGE, Dinosaur::HUGE - 1);
-        }
 
         if (strpos($specification, 'carnivorous') !== false) {
             $isCarnivorous = true;

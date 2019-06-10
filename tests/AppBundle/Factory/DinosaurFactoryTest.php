@@ -86,8 +86,7 @@ class DinosaurFactoryTest extends TestCase
             ['huge dinosaur'],
             ['huge dino'],
             ['huge'],
-            ['omg'],
-            ['scream'],
+            ['omg']
         ];
     }
 }
