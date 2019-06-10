@@ -29,6 +29,11 @@ class Dinosaur
      */
     private $isCarnivorous;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Enclosure", inversedBy="dinosaurs")
+     */
+    private $enclosure;
+
     public function __construct(string $genus = 'unknown', bool $isCarnivorous)
     {
         $this->genus = $genus;
