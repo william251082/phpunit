@@ -27,4 +27,20 @@ class DinosaurFactoryTest extends TestCase
         $this->assertSame('Velociraptor', $dinosaur->getGenus());
         $this->assertSame(5, $dinosaur->getLength());
     }
+
+    public function testItGrowsATriceratops()
+    {
+        $this->markTestIncomplete('Waiting for confirmation');
+    }
+
+    public function testItGrowsABabyVelociraptor()
+    {
+        if (!class_exists('Nanny')) {
+            $this->markTestSkipped('There\'s no Nanny');
+        }
+
+        $dinosaur = $this->factory->growVelociraptor(1);
+
+        $this->assertSame(1, $dinosaur->getLength());
+    }
 }
