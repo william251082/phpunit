@@ -43,4 +43,30 @@ class DinosaurFactoryTest extends TestCase
 
         $this->assertSame(1, $dinosaur->getLength());
     }
+
+    /**
+     * @dataProvider getSpecificationTests
+     */
+    public function testItGrowsADinosaurFromSpecification(string $spec, bool $expectedIsLarge, bool $expectedIsCarnivorous)
+    {
+        $dinosaur = $this->factory->growFromSpecification($spec);
+
+        if ($expectedIsLarge) {
+            $this->assertGreaterThanOrEqual(Dinosaur::LARGE, $dinosaur->getLength());
+        } else
+            $this->assertLessThan(Dinosaur::LARGE, $dinosaur->getLength());
+
+
+        $this->assertSame($expectedIsCarnivorous, $dinosaur->isCarnivorous(), 'Diets do not match');
+    }
+
+    public function getSpecificationTests()
+    {
+        return [
+            // specification is large and carnivorous
+            ['large carnivorous dinosaur', true, true],
+            'default response' => ['give all cookies', false, false],
+            ['large herbivores', true, false],
+        ];
+    }
 }
