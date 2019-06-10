@@ -3,9 +3,17 @@
 namespace AppBundle\Factory;
 
 use AppBundle\Entity\Dinosaur;
+use AppBundle\Service\DinosaurLengthDeterminator;
 
 class DinosaurFactory
 {
+    private $lengthDeterminator;
+
+    public function __construct(DinosaurLengthDeterminator $lengthDeterminator)
+    {
+        $this->lengthDeterminator = $lengthDeterminator;
+    }
+
     public function growVelociraptor(int $length): Dinosaur
     {
         return $this->createDinosaur('Velociraptor', true, $length);
@@ -15,7 +23,7 @@ class DinosaurFactory
     {
         // defaults
         $codeName = 'ING-' . random_int(1, 99999);
-        $length = $this->getLengthFromSpecification($specification);
+        $length = $this->lengthDeterminator->getLengthFromSpecification($specification);
         $isCarnivorous = false;
 
         if (strpos($specification, 'carnivorous') !== false) {
@@ -36,7 +44,7 @@ class DinosaurFactory
         return $dinosaur;
     }
 
-    private function getLengthFromSpecification(string $specification): int
+    public function getLengthFromSpecification(string $specification): int
     {
         $availableLengths = [
             'huge' => ['min' => Dinosaur::HUGE, 'max' => 100],
