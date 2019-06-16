@@ -8,11 +8,22 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="enclosures")
+ */
 class Enclosure
 {
     /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="App\Entity\Enclosure", mappedBy="enclosure", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Enclosure", mappedBy="enclosure", cascade={"persist"})
      */
     private $dinosaurs;
 
