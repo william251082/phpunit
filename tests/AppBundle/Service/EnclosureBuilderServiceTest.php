@@ -24,7 +24,6 @@ class EnclosureBuilderServiceTest extends TestCase
 
         $dinoFactory = $this->createMock(DinosaurFactory::class);
 
-        // parameter of method on the mocked class
         $dinoFactory->expects($this->exactly(2))
             ->method('growFromSpecification')
             ->willReturn(new Dinosaur())
@@ -35,6 +34,5 @@ class EnclosureBuilderServiceTest extends TestCase
 
         $this->assertCount(1, $enclosure->getSecurities());
         $this->assertCount(2, $enclosure->getDinosaurs());
-//        var_dump($enclosure->getDinosaurs()->toArray());
     }
 }
