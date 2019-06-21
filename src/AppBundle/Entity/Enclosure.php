@@ -23,7 +23,7 @@ class Enclosure
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Enclosure", mappedBy="enclosure", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure", cascade={"persist"})
      */
     private $dinosaurs;
 
@@ -53,13 +53,14 @@ class Enclosure
 
     public function addDinosaur(Dinosaur $dinosaur)
     {
-        if (!$this->canAddDinosaur($dinosaur)) {
-            throw new NotABuffetException();
-        }
-
         if (!$this->isSecurityActive()) {
             throw new DinosaursAreRunningRampantExceptions('Are you crazy?');
         }
+
+//        if (!$this->canAddDinosaur($dinosaur)) {
+//            throw new NotABuffetException();
+//        }
+
 
         $this->dinosaurs[] = $dinosaur;
     }
@@ -85,6 +86,7 @@ class Enclosure
 
     protected function canAddDinosaur(Dinosaur $dinosaur): bool
     {
+        var_dump($dinosaur->isCarnivorous());
         return count($this->dinosaurs) === 0
             || $this->dinosaurs->first()->isCarnivorous() === $dinosaur->isCarnivorous();
     }

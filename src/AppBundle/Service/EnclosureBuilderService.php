@@ -59,9 +59,9 @@ class EnclosureBuilderService
 
     private function addDinosaurs(int $numberOfDinosaurs, Enclosure $enclosure)
     {
+        $lengths = ['small', 'large', 'huge'];
+        $diets = ['herbivore', 'carnivorous'];
         for ($i = 0; $i < $numberOfDinosaurs; $i++) {
-            $lengths = ['small', 'large', 'huge'];
-            $diets = ['herbivore', 'carnivorous'];
             $length = $lengths[array_rand($lengths)];
             $diet = $diets[array_rand($diets)];
             $specification = "{$length} {$diet} dinosaur";
