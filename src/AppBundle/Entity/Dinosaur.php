@@ -88,4 +88,12 @@ class Dinosaur
     {
         return $this->isCarnivorous;
     }
+
+    /**
+     * @param mixed $enclosure
+     */
+    public function setEnclosure(Enclosure $enclosure): void
+    {
+        $this->enclosure = $enclosure;
+    }
 }
