@@ -46,7 +46,7 @@ class Enclosure
     /**
      * @return mixed
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -65,9 +65,9 @@ class Enclosure
             throw new DinosaursAreRunningRampantExceptions('Are you crazy?');
         }
 
-//        if (!$this->canAddDinosaur($dinosaur)) {
-//            throw new NotABuffetException();
-//        }
+        if (!$this->canAddDinosaur($dinosaur)) {
+            throw new NotABuffetException();
+        }
 
 
         $this->dinosaurs[] = $dinosaur;
@@ -94,7 +94,6 @@ class Enclosure
 
     protected function canAddDinosaur(Dinosaur $dinosaur): bool
     {
-        var_dump($dinosaur->isCarnivorous());
         return count($this->dinosaurs) === 0
             || $this->dinosaurs->first()->isCarnivorous() === $dinosaur->isCarnivorous();
     }
