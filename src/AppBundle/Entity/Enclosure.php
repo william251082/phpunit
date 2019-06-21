@@ -44,6 +44,14 @@ class Enclosure
     }
 
     /**
+     * @return mixed
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
      * @return Collection
      */
     public function getDinosaurs(): Collection
@@ -94,5 +102,10 @@ class Enclosure
     public function addSecurity(Security $security)
     {
         $this->securities[] = $security;
+    }
+
+    public function getDinosaurCount(): int
+    {
+        return $this->dinosaurs->count();
     }
 }
